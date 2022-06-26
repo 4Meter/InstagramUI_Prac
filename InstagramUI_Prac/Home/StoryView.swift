@@ -7,6 +7,48 @@
 
 import SwiftUI
 
+
+struct UserStoryView: View {
+    var body: some View {
+        VStack(spacing:6) {
+                
+            ZStack(alignment: .center) {
+                Image(localUser.photo)
+                    .resizable()
+                    //.scaledToFit()
+                    .frame(width: 64,alignment: .center)
+                    .clipShape(Circle())
+                Image(systemName: "plus.circle.fill")
+                    .resizable()
+                    .foregroundColor(Color("button"))
+                    .padding(2)
+                    .overlay(
+                        Circle()
+                            .stroke(lineWidth: 2.5)
+                            .fill(Color("Inverse"))
+                            .padding(1)
+                    )
+                    .frame(width: 28, height: 28)
+                    .offset(x: 20, y: 20)
+            }
+            
+            Text("Your Story")
+                .font(.caption)
+                .frame(width: 65,height:16)
+                .truncationMode(.tail)
+            
+        }
+        .frame(width: 72, height: 94)
+    }
+}
+
+struct UserStoryView_Previews: PreviewProvider {
+    static var previews: some View {
+        UserStoryView()
+ 
+    }
+}
+
 struct StoryView: View {
     
     var user:User

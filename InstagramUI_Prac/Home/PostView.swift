@@ -40,7 +40,7 @@ struct PostView: View {
                 .padding(.vertical)
                 
                 //Profile
-                VStack {
+                VStack(alignment: .leading, spacing: 0) {
                     //Name
                     Text(post.user.name)
                         .font(.subheadline)
@@ -75,10 +75,11 @@ struct PostView: View {
                     Button {
                         
                     } label: {
-                        Image(systemName: "heart")
+                        Image(systemName: post.liked ? "heart.fill" : "heart")
                             .resizable()
                             .frame(width: 23, height: 20)
                             .frame(width: 28, height: 28, alignment: .center)
+                            .foregroundColor(post.liked ? Color.red : Color.primary)
                     }
                     
                     Button {
@@ -143,7 +144,7 @@ struct PostView: View {
                     }
                 }
                 
-                HStack(spacing:0) {
+                HStack(alignment:.top,spacing:0) {
                     Text(post.user.name)
                         .font(.subheadline)
                         .fontWeight(.bold)
@@ -189,6 +190,6 @@ struct PostView: View {
 
 struct PostView_Previews: PreviewProvider {
     static var previews: some View {
-        PostView(post: dummyPosts[0])
+        PostView(post: dummyPosts[2])
     }
 }
